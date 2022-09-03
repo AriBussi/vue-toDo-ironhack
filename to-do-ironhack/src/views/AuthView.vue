@@ -6,14 +6,14 @@ import { useRouter } from 'vue-router';
 const store = useUserStore();
 const router = useRouter();
 
-const handleSignUp = () => {
+function handleSignUp() {
   const userData = {
     email: 'vueup@gmail.com',
     password: 'somepassword',
   };
 
   store.signUp(userData.email, userData.password);
-};
+}
 
 watch(() => store.currentUser, () => {
   if (store.currentUser) {

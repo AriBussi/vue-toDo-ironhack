@@ -12,8 +12,9 @@ store.fetchTasks();
     :key="task.id"
     :class="{ active: task.id === store.active.id }"
     @click="store.setActive(task.id)"
-    @keydown="()=>{}">
-        <p class="p">{{task.title}}</p>
+    @keyup.enter="store.setActive(task.id)">
+        <p>{{task.title}}</p>
+        <button>X</button>
     </div>
 </template>
 
@@ -32,6 +33,22 @@ store.fetchTasks();
     }
 
     .active {
-        background-color: rgb(210, 255, 239);
+        background-color: rgb(185, 218, 205);
     }
+
+    button {
+        background-color: transparent;
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.6rem;
+        border-radius: 6px;
+        border: 2px solid rgb(166, 199, 187);
+        color: rgb(166, 199, 187);
+    }
+
+    .active button {
+        border-color: azure;
+        color: azure;
+    }
+
 </style>

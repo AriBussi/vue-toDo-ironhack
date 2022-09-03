@@ -15,20 +15,20 @@ export default defineStore('tasks', () => {
     },
   ]);
 
-  const fetchTasks = async () => {
+  async function fetchTasks() {
     const { data: tasks } = await supabase
       .from('tasks')
       .select('*')
       .order('id', { ascending: false });
     tasks.value = tasks;
-  };
+  }
 
   const active = ref(0);
 
-  const setActive = (id) => {
+  function setActive(id) {
     const activeTask = currentTasks.value.filter((task) => task.id === id)[0];
     active.value = { ...activeTask };
-  };
+  }
 
   return {
     currentTasks,

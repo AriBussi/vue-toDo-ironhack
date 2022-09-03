@@ -5,6 +5,7 @@ import userStore from '@/store/auth';
 
 const store = userStore();
 const router = useRouter();
+
 onMounted(async () => {
   try {
     await store.fetchUser();
@@ -29,6 +30,10 @@ onMounted(async () => {
 </template>
 
 <style>
+html {
+  font-size: 20px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,6 +52,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #000000;
 }
 </style>

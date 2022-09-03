@@ -1,33 +1,23 @@
-<script>
+<script setup>
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import userStore from '@/store/auth';
-import { mapState, mapActions } from 'pinia';
 
-export default {
-  name: 'App',
-  computed: {
-    ...mapState(userStore, ['user']),
-  },
-  methods: {
-    ...mapActions(userStore, ['fetchUser']),
-  },
-  async created() {
-    try {
-      await this.fetchUser(); // here we call fetch user
+const store = userStore();
+const router = useRouter();
+onMounted(async () => {
+  try {
+    await store.fetchUser();
 
-      if (!this.user) {
-        // redirect them to logout if the user is not there
-
-        this.$router.push({ path: '/auth' });
-      } else {
-        // continue to dashboard
-
-        this.$router.push({ path: '/' });
-      }
-    } catch (e) {
-      console.log(e);
+    if (!store.currentUser) {
+      router.push({ path: '/auth' });
+    } else {
+      router.push({ path: '/' });
     }
-  },
-};
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 </script>
 

@@ -1,14 +1,10 @@
 <script setup>
-import taskStore from '@/store/tasks';
-
-const store = taskStore();
-
-store.fetchTasks();
+import ToDoList from '@/components/ToDoList.vue';
 
 </script>
 
 <template>
   <div class="home">
-    <h1>home</h1>
+    <ToDoList />
   </div>
 </template>

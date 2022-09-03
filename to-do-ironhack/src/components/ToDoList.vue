@@ -4,7 +4,6 @@ import taskStore from '@/store/tasks';
 const store = taskStore();
 
 store.fetchTasks();
-
 </script>
 
 <template>
@@ -14,7 +13,7 @@ store.fetchTasks();
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
-        <button>X</button>
+        <button @click="store.deleteTask(task.id)">X</button>
     </div>
 </template>
 

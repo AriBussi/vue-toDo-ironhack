@@ -26,8 +26,13 @@ export default defineStore('tasks', () => {
   const active = ref(0);
 
   function setActive(id) {
-    const activeTask = currentTasks.value.filter((task) => task.id === id)[0];
+    const activeTask = currentTasks.value.filter((task) => task.id === id);
     active.value = { ...activeTask };
+  }
+
+  function deleteTask(id) {
+    const taskToDelete = currentTasks.value.find((task) => task.id === id);
+    currentTasks.value.splice(currentTasks.value.indexOf(taskToDelete), 1);
   }
 
   return {
@@ -35,5 +40,6 @@ export default defineStore('tasks', () => {
     fetchTasks,
     active,
     setActive,
+    deleteTask,
   };
 });

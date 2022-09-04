@@ -25,7 +25,7 @@ export default defineStore(
       tasks.value = tasks;
     }
 
-    const active = ref(0);
+    const active = ref(null);
 
     function getIndexById(id) {
       return currentTasks.value.findIndex((task) => task.id === id);
@@ -37,6 +37,7 @@ export default defineStore(
 
     function deleteTask(id) {
       currentTasks.value.splice(getIndexById(id), 1);
+      active.value = null;
     }
 
     return {

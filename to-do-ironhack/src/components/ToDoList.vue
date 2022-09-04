@@ -9,7 +9,7 @@ store.fetchTasks();
 <template>
     <div v-for="task in store.currentTasks"
     :key="task.id"
-    :class="{ active: task.id === store.active.id }"
+    :class="{ active: store.active && task.id === store.active.id }"
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>

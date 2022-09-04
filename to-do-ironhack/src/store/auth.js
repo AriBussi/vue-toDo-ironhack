@@ -20,18 +20,23 @@ export default defineStore(
 
       if (error) throw error;
 
-      console.log(user);
-
       if (user) currentUser.value = user;
+    }
+
+    async function logOut() {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) throw error;
     }
 
     return {
       currentUser,
       fetchUser,
       signUp,
+      logOut,
     };
   },
-  {
-    persist: true,
-  },
+  // {
+  //   persist: true,
+  // },
 );

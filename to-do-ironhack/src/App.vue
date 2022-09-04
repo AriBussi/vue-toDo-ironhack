@@ -2,6 +2,7 @@
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import userStore from '@/store/auth';
+import NavBar from '@/components/NavBar.vue';
 
 const store = userStore();
 const router = useRouter();
@@ -23,9 +24,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-  </nav>
+  <NavBar />
+  <button @click="store.logOut">Log out</button>
   <router-view/>
 </template>
 
@@ -47,18 +47,5 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--neutral-dark);
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #000000;
 }
 </style>

@@ -13,7 +13,9 @@ store.fetchTasks();
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
-        <button @click="store.deleteTask(task.id)">X</button>
+        <button type="button" @click="store.deleteTask(task.id)">
+            X
+        </button>
     </div>
 </template>
 
@@ -22,7 +24,7 @@ store.fetchTasks();
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
-        background-color: azure;
+        background-color: var(--neutral-light);
         cursor: pointer;
     }
 
@@ -32,7 +34,7 @@ store.fetchTasks();
     }
 
     .active {
-        background-color: rgb(185, 218, 205);
+        background-color: var(--primary);
     }
 
     button {
@@ -41,13 +43,15 @@ store.fetchTasks();
         height: 2rem;
         margin-right: 0.6rem;
         border-radius: 6px;
-        border: 2px solid rgb(166, 199, 187);
-        color: rgb(166, 199, 187);
+        border: 2px solid var(--neutral-dark);
+        color: var(--neutral-dark);
+        opacity: .6;
+        font-weight: 700;
     }
 
-    .active button {
-        border-color: azure;
-        color: azure;
+    button:hover {
+        border-color: var(--danger);
+        color: var(--danger);
     }
 
 </style>

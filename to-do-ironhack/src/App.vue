@@ -30,6 +30,13 @@ onMounted(async () => {
 </template>
 
 <style>
+:root {
+  --primary: #b9dacd;
+  --neutral-light: #ebebeb;
+  --neutral-dark: #404953;
+  --danger: #ff3200;
+}
+
 html {
   font-size: 20px;
 }
@@ -39,7 +46,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--neutral-dark);
 }
 
 nav {

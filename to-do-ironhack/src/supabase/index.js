@@ -1,3 +1,4 @@
+import '@/assets/css/main.css';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://boqmlgjcihzvwntanocz.supabase.co';

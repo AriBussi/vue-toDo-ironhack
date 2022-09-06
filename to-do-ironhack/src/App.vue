@@ -24,23 +24,12 @@ onMounted(async () => {
 <template>
   <nav>
       <router-link to="/">Home</router-link>
-      <button @click="store.logOut">Log out</button>
+      <button class="ab-btn" @click="store.logOut">Log out</button>
   </nav>
   <router-view/>
 </template>
 
 <style>
-:root {
-  --primary: #b9dacd;
-  --neutral-light: #ebebeb;
-  --neutral-dark: #404953;
-  --danger: #ff3200;
-}
-
-html {
-  font-size: 20px;
-}
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -55,7 +44,7 @@ nav {
 
 nav a {
 font-weight: bold;
-color: #2c3e50;
+color: var(--neutral-dark);
 }
 
 nav a.router-link-exact-active {

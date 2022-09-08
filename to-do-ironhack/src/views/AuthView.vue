@@ -7,6 +7,7 @@ import ErrorDisplay from '@/components/ErrorDisplay.vue';
 const store = useUserStore();
 const router = useRouter();
 
+const isRegistered = ref(false);
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
@@ -14,7 +15,7 @@ const error = ref(null);
 
 watch(() => store.currentUser, () => {
   if (store.currentUser) {
-    router.push({ path: '/' });
+    router.push({ name: 'home' });
   }
 });
 
@@ -25,10 +26,8 @@ function showError(er) {
   }, 2000);
 }
 
-async function authenticate() {
-  if (email.value === '' || password.value === '') showError('all fields must be completed');
-  if (password.value !== confirmPassword.value) showError('passwords do not match');
-  if (!error.value) {
+async function register() {
+  if (password.value === confirmPassword.value) {
     try {
       const { er } = await store.signUp({
         email: email.value,
@@ -39,13 +38,30 @@ async function authenticate() {
     } catch (er) {
       showError(er.message);
     }
+    return;
+  }
+
+  showError('passwords do not match');
+}
+
+async function log() {
+  try {
+    const { er } = await store.logIn({
+      email: email.value,
+      password: password.value,
+    });
+    if (er) throw error;
+    router.push({ name: 'auth' });
+  } catch (er) {
+    console.log(er);
+    showError(er.message);
   }
 }
 
 </script>
 
 <template>
-    <form @submit.prevent="authenticate">
+    <form @submit.prevent="isRegistered ? register() : log()">
         <label for="email">
             <input
                 v-model="email"
@@ -66,6 +82,7 @@ async function authenticate() {
         </label>
         <label for="confirm password">
             <input
+                v-if="isRegistered"
                 v-model="confirmPassword"
                 class="ab-input"
                 type="password"
@@ -74,7 +91,17 @@ async function authenticate() {
                 required >
         </label>
 
-        <button class="ab-btn" @click="authenticate">Register</button>
+        <button
+            class="ab-btn ab-btn--primary"
+            type="submit">{{isRegistered ? 'Register' : 'Log In' }}
+        </button>
+
+        <div class="footer">
+            <p>{{ isRegistered ? 'Already registered?' : "Don't have an account?" }}</p>
+            <button class="ab-btn ab-btn--link" @click="isRegistered = !isRegistered">
+                {{ isRegistered ? 'Log In' : 'Register' }}
+            </button>
+        </div>
     </form>
     <ErrorDisplay v-show="error" :error="error"/>
 </template>
@@ -84,10 +111,17 @@ async function authenticate() {
         display: flex;
         display: flex;
         flex-direction: column;
-        background: var(--neutral-light);
+        background: var(--neutral--light);
         max-width: 70vw;
         margin: 0 auto;
-        padding: 2.5rem 1.5rem;
+        padding: 2.5rem 1.5rem 1rem 1.5rem;
         border-radius: var(--border-radii);
+    }
+
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        font-size: .8rem;
     }
 </style>

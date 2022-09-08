@@ -19,12 +19,18 @@ onMounted(async () => {
     console.log(error);
   }
 });
+
+async function logOut() {
+  store.logOut();
+  store.currentUser = null;
+  router.push({ name: 'auth' });
+}
 </script>
 
 <template>
   <nav>
       <router-link to="/">Home</router-link>
-      <button class="ab-btn" @click="store.logOut">Log out</button>
+      <button v-if="store.currentUser" class="ab-btn ab-btn--link" @click="logOut">Log out</button>
   </nav>
   <router-view/>
 </template>
@@ -35,7 +41,7 @@ onMounted(async () => {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--neutral-dark);
+  color: var(--neutral--dark);
 }
 
 nav {
@@ -44,7 +50,7 @@ nav {
 
 nav a {
 font-weight: bold;
-color: var(--neutral-dark);
+color: var(--neutral--dark);
 }
 
 nav a.router-link-exact-active {

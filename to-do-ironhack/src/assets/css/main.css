@@ -1,12 +1,15 @@
 :root {
     /* Colors */
     --primary: #b9dacd;
-    --neutral-light: #ebebeb;
-    --neutral-dark: #2c3e50;
+    --primary--dark: #8bb0a1;
+    --neutral--light: #ebebeb;
+    --neutral--dark: #2c3e50;
     --danger: hsla(12, 100%, 50%, 0.6);
+    
     /* Radii */
     --border-radii: 0.5rem;
-    --border-radii-soft: 0.2rem;
+    --border-radii--soft: 0.2rem;
+
     /* Fonts */
     --font-bold: 700;
 }
@@ -22,13 +25,21 @@ html {
 }
 
 .ab-btn {
-    background-color: var(--primary);
     border: none;
-    border-radius: var(--border-radii-soft);
-    color: var(--neutral-dark);
+    border-radius: var(--border-radii--soft);
     cursor: pointer;
     padding: .5rem;
     font-weight: var(--font-bold);
+}
+
+.ab-btn--primary {
+    background-color: var(--primary);
+    color: var(--neutral--dark);
+}
+
+.ab-btn--link {
+    background-color: transparent;
+    color: var(--primary--dark);
 }
 
 .ab-input {
@@ -39,5 +50,5 @@ input {
     padding: .5rem;
     margin-bottom: 1rem;
     border: none;
-    border-radius: var(--border-radii-soft);
+    border-radius: var(--border-radii--soft);
 }

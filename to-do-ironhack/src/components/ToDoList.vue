@@ -24,7 +24,7 @@ store.fetchTasks();
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
-        background-color: var(--neutral-light);
+        background-color: var(--neutral--light);
         cursor: pointer;
     }
 
@@ -43,8 +43,8 @@ store.fetchTasks();
         height: 2rem;
         margin-right: 0.6rem;
         border-radius: 6px;
-        border: 2px solid var(--neutral-dark);
-        color: var(--neutral-dark);
+        border: 2px solid var(--neutral--dark);
+        color: var(--neutral--dark);
         font-weight: 700;
     }
 

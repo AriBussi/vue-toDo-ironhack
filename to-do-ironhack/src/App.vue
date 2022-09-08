@@ -11,9 +11,9 @@ onMounted(async () => {
     await store.fetchUser();
 
     if (!store.currentUser) {
-      router.push({ path: '/auth' });
+      router.push({ name: 'auth' });
     } else {
-      router.push({ path: '/' });
+      router.push({ name: 'home' });
     }
   } catch (error) {
     console.log(error);

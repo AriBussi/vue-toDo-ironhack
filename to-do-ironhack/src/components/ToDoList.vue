@@ -45,7 +45,6 @@ store.fetchTasks();
         border-radius: 6px;
         border: 2px solid var(--neutral-dark);
         color: var(--neutral-dark);
-        opacity: .6;
         font-weight: 700;
     }
 

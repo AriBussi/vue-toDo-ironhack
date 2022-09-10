@@ -1,10 +1,14 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
+import { useRouter } from 'vue-router';
 import supabase from '../supabase/index';
+import useUserStore from './auth';
 
 export default defineStore(
   'tasks',
   () => {
+    const store = useUserStore();
+    const router = useRouter();
     const currentTasks = ref([]);
     const active = ref(null);
 
@@ -12,17 +16,21 @@ export default defineStore(
       const { data: tasks } = await supabase
         .from('tasks')
         .select('*')
-        .order('id', { ascending: false });
+        .order('inserted_at', { ascending: false });
       currentTasks.value = tasks;
     }
 
-    // async function addTask() {
-    //   const { data, error } = await supabase
-    //     .from('tasks')
-    //     .insert([
-    //       { some_column: 'someValue', other_column: 'otherValue' },
-    //     ]);
-    // }
+    async function createTask(task) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .insert([{ ...task, user_id: store.currentUser.id }]);
+
+      if (error) throw error;
+      if (data) {
+        currentTasks.value = data;
+        router.push({ name: 'home' });
+      }
+    }
 
     function getIndexById(id) {
       return currentTasks.value.findIndex((task) => task.id === id);
@@ -43,6 +51,7 @@ export default defineStore(
       active,
       setActive,
       deleteTask,
+      createTask,
     };
   },
   {

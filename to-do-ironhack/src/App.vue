@@ -29,15 +29,16 @@ async function logOut() {
 
 <template>
   <nav>
-      <router-link to="/">Home</router-link>
-      <button v-if="store.currentUser" class="ab-btn ab-btn--link" @click="logOut">Log out</button>
+    <router-link to="/">Home</router-link>
+    <router-link to="/create">Create</router-link>
+    <button v-if="store.currentUser" class="ab-btn ab-btn--link" @click="logOut">Log out</button>
   </nav>
   <router-view/>
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -45,15 +46,15 @@ async function logOut() {
 }
 
 nav {
-    padding: 30px;
+  padding: 30px;
 }
 
 nav a {
-font-weight: bold;
-color: var(--neutral--dark);
+  font-weight: bold;
+  color: var(--neutral--dark);
 }
 
 nav a.router-link-exact-active {
-color: var(--primary);
+  color: var(--primary);
 }
 </style>

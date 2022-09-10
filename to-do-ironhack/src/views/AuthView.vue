@@ -61,11 +61,11 @@ async function log() {
 </script>
 
 <template>
-    <form @submit.prevent="isRegistered ? log() : register()">
+    <form class="ab-form" @submit.prevent="isRegistered ? log() : register()">
         <label for="email">
             <input
                 v-model="email"
-                class="ab-input"
+                class="ab-form-input"
                 type="email"
                 placeholder="Email"
                 name="email" >
@@ -73,7 +73,7 @@ async function log() {
         <label for="password">
             <input
                 v-model="password"
-                class="ab-input"
+                class="ab-form-input"
                 type="password"
                 placeholder="Password"
                 name="set password" >
@@ -82,7 +82,7 @@ async function log() {
             <input
                 v-if="!isRegistered"
                 v-model="confirmPassword"
-                class="ab-input"
+                class="ab-form-input"
                 type="password"
                 placeholder="Confirm password"
                 name="confirm password" >
@@ -93,7 +93,7 @@ async function log() {
             type="submit">{{isRegistered ? 'Log In' : 'Register' }}
         </button>
 
-        <div class="footer">
+        <div class="ab-form-footer">
             <p>{{ isRegistered ? "Don't have an account?" : 'Already registered?' }}</p>
             <button class="ab-btn ab-btn--link" @click.prevent="isRegistered = !isRegistered">
                 {{ isRegistered ? 'Register' : 'Log In'}}
@@ -102,23 +102,3 @@ async function log() {
     </form>
     <ErrorDisplay v-show="error" :error="error"/>
 </template>
-
-<style scoped>
-    form {
-        display: flex;
-        display: flex;
-        flex-direction: column;
-        background: var(--neutral--light);
-        max-width: 70vw;
-        margin: 0 auto;
-        padding: 2.5rem 1.5rem 1rem 1.5rem;
-        border-radius: var(--border-radii);
-    }
-
-    .footer {
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
-        font-size: .8rem;
-    }
-</style>

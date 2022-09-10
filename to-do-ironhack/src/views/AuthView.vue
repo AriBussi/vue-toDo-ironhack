@@ -7,7 +7,7 @@ import ErrorDisplay from '@/components/ErrorDisplay.vue';
 const store = useUserStore();
 const router = useRouter();
 
-const isRegistered = ref(false);
+const isRegistered = ref(true);
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
@@ -61,45 +61,42 @@ async function log() {
 </script>
 
 <template>
-    <form @submit.prevent="isRegistered ? register() : log()">
+    <form @submit.prevent="isRegistered ? log() : register()">
         <label for="email">
             <input
                 v-model="email"
                 class="ab-input"
                 type="email"
                 placeholder="Email"
-                name="email"
-                required >
+                name="email" >
         </label>
         <label for="password">
             <input
                 v-model="password"
                 class="ab-input"
                 type="password"
-                placeholder="Set password"
-                name="set password"
-                required >
+                placeholder="Password"
+                name="set password" >
         </label>
         <label for="confirm password">
             <input
-                v-if="isRegistered"
+                v-if="!isRegistered"
                 v-model="confirmPassword"
                 class="ab-input"
                 type="password"
                 placeholder="Confirm password"
-                name="confirm password"
-                required >
+                name="confirm password" >
         </label>
 
         <button
             class="ab-btn ab-btn--primary"
-            type="submit">{{isRegistered ? 'Register' : 'Log In' }}
+            type="submit">{{isRegistered ? 'Log In' : 'Register' }}
         </button>
 
         <div class="footer">
-            <p>{{ isRegistered ? 'Already registered?' : "Don't have an account?" }}</p>
-            <button class="ab-btn ab-btn--link" @click="isRegistered = !isRegistered">
-                {{ isRegistered ? 'Log In' : 'Register' }}
+            <p>{{ isRegistered ? "Don't have an account?" : 'Already registered?' }}</p>
+            <button class="ab-btn ab-btn--link" @click.prevent="isRegistered = !isRegistered">
+                {{ isRegistered ? 'Register' : 'Log In'}}
             </button>
         </div>
     </form>

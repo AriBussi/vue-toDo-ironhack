@@ -6,6 +6,7 @@ export default defineStore(
   'tasks',
   () => {
     const currentTasks = ref([]);
+    const active = ref(null);
 
     async function fetchTasks() {
       const { data: tasks } = await supabase
@@ -15,7 +16,13 @@ export default defineStore(
       currentTasks.value = tasks;
     }
 
-    const active = ref(null);
+    // async function addTask() {
+    //   const { data, error } = await supabase
+    //     .from('tasks')
+    //     .insert([
+    //       { some_column: 'someValue', other_column: 'otherValue' },
+    //     ]);
+    // }
 
     function getIndexById(id) {
       return currentTasks.value.findIndex((task) => task.id === id);

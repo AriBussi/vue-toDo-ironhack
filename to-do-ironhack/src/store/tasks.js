@@ -40,9 +40,18 @@ export default defineStore(
       active.value = currentTasks.value[getIndexById(id)];
     }
 
-    function deleteTask(id) {
-      currentTasks.value.splice(getIndexById(id), 1);
-      active.value = null;
+    async function deleteTask(id) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .delete()
+        .match({ id });
+
+      if (error) throw error;
+      if (data) {
+        currentTasks.value.splice(getIndexById(id), 1);
+        active.value = null;
+        router.push({ name: 'home' });
+      }
     }
 
     return {

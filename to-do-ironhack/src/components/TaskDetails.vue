@@ -15,8 +15,8 @@ const cleanActiveDate = computed(() => {
 </script>
 
 <template>
-    <div>
-        <button type="button">x</button>
+    <div v-if="store.active" :class="{ show: !store.active}">
+        <button type="button" @click="store.active = null">x</button>
         <h2>{{store.active.title}}</h2>
         <p v-if="store.active.description">{{store.active.description}}</p>
 
@@ -58,5 +58,9 @@ const cleanActiveDate = computed(() => {
         color: var(--primary--dark);
         font-weight: var(--font-bold);
         font-size: .8rem;
+    }
+
+    .show {
+        display: none;
     }
 </style>

@@ -32,7 +32,8 @@ const cleanActiveDate = computed(() => {
 
 <style scoped>
     div {
-        border: 5px solid var(--primary);
+        border: 5px solid var(--primary--dark);
+        background-color: var(--white);
 
         text-align: start;
         position: absolute;

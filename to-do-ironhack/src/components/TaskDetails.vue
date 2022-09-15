@@ -18,10 +18,10 @@ const cleanActiveDate = computed(() => {
 <template>
     <div v-if="store.active" :class="{ show: !store.active}">
         <ControlButton @click="store.active = null">
-            <font-awesome-icon icon="fa-solid fa-xmark" />
+            <font-awesome-icon icon="fa-solid fa-xmark" size="xl"/>
         </ControlButton>
         <ControlButton class="edit" >
-            <font-awesome-icon icon="fa-solid fa-pen" />
+            <font-awesome-icon icon="fa-solid fa-pen" size="xl"/>
         </ControlButton>
         <h2>{{store.active.title}}</h2>
         <p v-if="store.active.description">{{store.active.description}}</p>

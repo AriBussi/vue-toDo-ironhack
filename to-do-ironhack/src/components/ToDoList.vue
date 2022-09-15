@@ -18,7 +18,7 @@ store.fetchTasks();
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
         <ControlButton @click="store.deleteTask(task.id)">
-            <font-awesome-icon icon="fa-solid fa-trash" />
+            <font-awesome-icon icon="fa-solid fa-trash" size="xl"/>
         </ControlButton>
     </div>
 </template>

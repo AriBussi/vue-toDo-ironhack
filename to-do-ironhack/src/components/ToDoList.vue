@@ -1,6 +1,6 @@
 <script setup>
 import taskStore from '@/store/tasks';
-import CloseButton from './CloseButton.vue';
+import ControlButton from './ControlButton.vue';
 
 const store = taskStore();
 
@@ -17,9 +17,9 @@ store.fetchTasks();
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
-        <CloseButton @click="store.deleteTask(task.id)">
+        <ControlButton @click="store.deleteTask(task.id)">
             X
-        </CloseButton>
+        </ControlButton>
     </div>
 </template>
 

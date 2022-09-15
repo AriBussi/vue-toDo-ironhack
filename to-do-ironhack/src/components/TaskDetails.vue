@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import useTaskStore from '@/store/tasks';
+import CloseButton from './CloseButton.vue';
 
 const store = useTaskStore();
 
@@ -16,7 +17,9 @@ const cleanActiveDate = computed(() => {
 
 <template>
     <div v-if="store.active" :class="{ show: !store.active}">
-        <button type="button" @click="store.active = null">x</button>
+        <CloseButton @click="store.active = null">
+            X
+        </CloseButton>
         <h2>{{store.active.title}}</h2>
         <p v-if="store.active.description">{{store.active.description}}</p>
 

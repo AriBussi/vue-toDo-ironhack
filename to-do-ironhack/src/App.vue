@@ -43,6 +43,7 @@ async function logOut() {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--neutral--dark);
+  max-height: 100vh;
 }
 
 nav {

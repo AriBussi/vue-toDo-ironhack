@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import useTaskStore from '@/store/tasks';
-import CloseButton from './CloseButton.vue';
+import ControlButton from './ControlButton.vue';
 
 const store = useTaskStore();
 
@@ -17,9 +17,12 @@ const cleanActiveDate = computed(() => {
 
 <template>
     <div v-if="store.active" :class="{ show: !store.active}">
-        <CloseButton @click="store.active = null">
+        <ControlButton @click="store.active = null">
             X
-        </CloseButton>
+        </ControlButton>
+        <ControlButton class="edit" >
+            E
+        </ControlButton>
         <h2>{{store.active.title}}</h2>
         <p v-if="store.active.description">{{store.active.description}}</p>
 
@@ -39,10 +42,10 @@ const cleanActiveDate = computed(() => {
         background-color: var(--white);
 
         text-align: start;
-        position: absolute;
-        bottom: -6px;
-        left: 6px;
-        right: 6px;
+        position: sticky;
+        bottom: 0;
+        left: 1rem;
+        right: 1rem;
         border-top-left-radius: var(--border-radii);
         border-top-right-radius: var(--border-radii);
         padding: 1rem;
@@ -66,5 +69,9 @@ const cleanActiveDate = computed(() => {
 
     .show {
         display: none;
+    }
+
+    .edit {
+        margin-right: 2.5rem;
     }
 </style>

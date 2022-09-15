@@ -24,6 +24,10 @@ store.fetchTasks();
 </template>
 
 <style scoped>
+    button {
+        margin-right: 0.6rem;
+    }
+
     div {
         display: flex;
         align-items: center;
@@ -44,5 +48,4 @@ store.fetchTasks();
     .completed p {
         text-decoration: line-through;
     }
-
 </style>

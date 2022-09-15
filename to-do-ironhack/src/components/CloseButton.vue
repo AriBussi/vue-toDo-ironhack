@@ -8,12 +8,11 @@
     </button>
 </template>
 
-<style>
+<style scoped>
     button {
         background-color: transparent;
-        width: 2rem;
+        min-width: 2rem;
         height: 2rem;
-        margin-right: 0.6rem;
         border-radius: 6px;
         border: 2px solid var(--neutral--dark);
         color: var(--neutral--dark);

@@ -28,6 +28,10 @@ html {
     box-sizing: border-box;
 }
 
+.svg-inline--fa {
+    height: 1rem;
+}
+
 .ab-btn {
     border: none;
     border-radius: var(--border-radii--soft);

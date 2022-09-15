@@ -39,6 +39,7 @@ store.fetchTasks();
     p {
         flex-grow: 1;
         font-weight: 700;
+        margin-right: .6rem;
     }
 
     .active {

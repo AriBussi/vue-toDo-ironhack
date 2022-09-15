@@ -1,11 +1,11 @@
 <script setup>
-import ToDoList from '@/components/ToDoList.vue';
-import TaskDetails from '@/components/TaskDetails.vue';
+import TasksList from '@/components/TasksList.vue';
+import DetailsDisplay from '@/components/DetailsDisplay.vue';
 </script>
 
 <template>
   <div class="home">
-    <ToDoList />
-    <TaskDetails />
+    <TasksList />
+    <DetailsDisplay />
   </div>
 </template>

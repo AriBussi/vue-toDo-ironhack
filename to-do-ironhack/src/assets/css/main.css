@@ -2,9 +2,12 @@
     /* Colors */
     --primary: #b9dacd;
     --primary--dark: #8bb0a1;
+
     --neutral--light: #ebebeb;
     --neutral--dark: #2c3e50;
+
     --danger: hsla(12, 100%, 50%, 0.6);
+    --white: #fff;
 
     /* Radii */
     --border-radii: 0.5rem;

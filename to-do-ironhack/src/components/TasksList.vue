@@ -17,6 +17,9 @@ store.fetchTasks();
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
+        <ControlButton class="edit" >
+            <font-awesome-icon icon="fa-solid fa-pen" size="xl"/>
+        </ControlButton>
         <ControlButton @click="store.deleteTask(task.id)">
             <font-awesome-icon icon="fa-solid fa-trash" size="xl"/>
         </ControlButton>
@@ -39,7 +42,7 @@ store.fetchTasks();
     p {
         flex-grow: 1;
         font-weight: 700;
-        margin-right: .6rem;
+        margin: 1rem;
     }
 
     .active {

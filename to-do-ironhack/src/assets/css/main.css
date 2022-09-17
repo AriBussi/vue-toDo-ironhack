@@ -57,7 +57,7 @@ html {
     flex-direction: column;
     background: var(--neutral--light);
     max-width: 70vw;
-    margin: 0 auto;
+    margin: 4rem auto 0 auto;
     padding: 2.5rem 1.5rem 1rem 1.5rem;
     border-radius: var(--border-radii);
 }

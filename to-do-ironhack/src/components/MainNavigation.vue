@@ -35,6 +35,7 @@ async function logOut() {
 <style scoped>
 nav {
     padding: .5rem;
+    min-height: 3.1rem;
     display: flex;
     position: fixed;
     top: 0;

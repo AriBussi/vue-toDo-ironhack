@@ -11,7 +11,7 @@
 
     /* Fonts */
     --font: Avenir, Helvetica, Arial, sans-serif;
-    --font-bold: 700;
+    --weight-bold: 700;
 
     /* Radii */
     --border-radii: 0.5rem;
@@ -36,7 +36,7 @@ html {
     border-radius: var(--border-radii--soft);
     cursor: pointer;
     padding: .5rem;
-    font-weight: var(--font-bold);
+    font-weight: var(--weight-bold);
     font-family: var(--font);
     transition: all 1s ease;
 }

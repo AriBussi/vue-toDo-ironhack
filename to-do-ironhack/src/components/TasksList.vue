@@ -42,7 +42,7 @@ store.fetchTasks();
 
     p {
         flex-grow: 1;
-        font-weight: 700;
+        font-weight: var(--weight-bold);
         margin: 1rem;
     }
 

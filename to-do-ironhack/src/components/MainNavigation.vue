@@ -52,7 +52,7 @@ nav div {
 
 .ab-nav-item {
     color: var(--primary);
-    font-weight: var(--font-bold);
+    font-weight: var(--weight-bold);
     text-decoration: none;
     font-size: .8rem;
     transition: color var(--transition--soft);

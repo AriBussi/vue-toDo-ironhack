@@ -14,19 +14,25 @@ async function logOut() {
 
 <template>
     <nav>
-        <router-link to="/">Home</router-link>
+        <router-link to="/">
+            <font-awesome-icon icon="fa-solid fa-house" size="l" fixed-width />
+        </router-link>
         <div>
-            <router-link to="/create">Create</router-link>
+            <router-link v-if="store.currentUser" to="/create">
+                <font-awesome-icon icon="fa-solid fa-plus" size="l" fixed-width/>
+            </router-link>
             <button v-if="store.currentUser"
                 class="ab-btn ab-btn--link"
-                @click="logOut">Log out</button>
+                @click="logOut">
+                <font-awesome-icon icon="fa-solid fa-right-from-bracket" size="xl" fixed-width />
+            </button>
         </div>
     </nav>
 </template>
 
 <style>
 nav {
-    padding: 30px;
+    padding: .5rem;
     display: flex;
 }
 

@@ -1,9 +1,11 @@
 <script setup>
-
+const props = defineProps({
+  type: String,
+});
 </script>
 
 <template>
-    <button type="button" >
+    <button type="button" :class="props.type">
         <slot></slot>
     </button>
 </template>
@@ -19,8 +21,18 @@
         font-weight: 700;
     }
 
-    button:hover {
-        border-color: var(--danger);
+    .regular:hover {
+        border-color: var(--primary--dark);
+        color: var(--primary--dark);
+    }
+
+    .active:hover {
+        border-color: var(--white);
+        color: var(--white);
+    }
+
+    .danger:hover {
+        border: 2px solid var(--danger);
         color: var(--danger);
     }
 </style>

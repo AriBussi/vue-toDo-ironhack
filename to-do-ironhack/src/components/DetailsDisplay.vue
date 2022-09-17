@@ -17,8 +17,8 @@ const cleanActiveDate = computed(() => {
 
 <template>
     <div v-if="store.active" :class="{ show: !store.active}">
-        <ControlButton @click="store.active = null">
-            <font-awesome-icon icon="fa-solid fa-xmark" size="xl"/>
+        <ControlButton type="danger" @click="store.active = null">
+            <font-awesome-icon icon="fa-solid fa-xmark" size="xl" fixed-width/>
         </ControlButton>
         <h2>{{store.active.title}}</h2>
         <p v-if="store.active.description">{{store.active.description}}</p>
@@ -56,6 +56,7 @@ const cleanActiveDate = computed(() => {
 
     h2 {
         margin-top: 0;
+        margin-right: 3rem;
     }
 
     span {
@@ -66,9 +67,5 @@ const cleanActiveDate = computed(() => {
 
     .show {
         display: none;
-    }
-
-    .edit {
-        margin-right: 2.5rem;
     }
 </style>

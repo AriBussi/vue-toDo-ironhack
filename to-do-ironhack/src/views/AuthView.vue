@@ -53,7 +53,6 @@ async function log() {
     if (er) throw error;
     router.push({ name: 'auth' });
   } catch (er) {
-    console.log(er);
     showError(er.message);
   }
 }

@@ -1,5 +1,6 @@
 <script setup>
 import taskStore from '@/store/tasks';
+import ControlButton from './ControlButton.vue';
 
 const store = taskStore();
 
@@ -10,19 +11,27 @@ store.fetchTasks();
     <div v-for="task in store.currentTasks"
     :key="task.id"
     :class="{
-        active: store.active && task.id === store.active.id,
+        active: task.id === store.active?.id,
         completed: task.is_complete
         }"
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
-        <button type="button" @click="store.deleteTask(task.id)">
-            X
-        </button>
+        <ControlButton
+        :type="task.id === store.active?.id ? 'active' : 'regular'" class="edit" >
+            <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
+        </ControlButton>
+        <ControlButton type="danger" @click="store.deleteTask(task.id)">
+            <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
+        </ControlButton>
     </div>
 </template>
 
 <style scoped>
+    button {
+        margin-right: 0.6rem;
+    }
+
     div {
         display: flex;
         align-items: center;
@@ -34,30 +43,18 @@ store.fetchTasks();
     p {
         flex-grow: 1;
         font-weight: 700;
+        margin: 1rem;
     }
 
     .active {
         background-color: var(--primary);
     }
 
-    button {
-        background-color: transparent;
-        width: 2rem;
-        height: 2rem;
-        margin-right: 0.6rem;
-        border-radius: 6px;
-        border: 2px solid var(--neutral--dark);
-        color: var(--neutral--dark);
-        font-weight: 700;
-    }
-
-    button:hover {
-        border-color: var(--danger);
-        color: var(--danger);
-    }
-
     .completed p {
         text-decoration: line-through;
     }
 
+    .edit {
+        margin-right: .6rem;
+    }
 </style>

@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import useTaskStore from '@/store/tasks';
+import ControlButton from './ControlButton.vue';
 
 const store = useTaskStore();
 
@@ -12,15 +13,21 @@ const cleanActiveDate = computed(() => {
   };
 });
 
+function isComplete() {
+  store.completeTask(store.active.is_complete);
+}
+
 </script>
 
 <template>
     <div v-if="store.active" :class="{ show: !store.active}">
-        <button type="button" @click="store.active = null">x</button>
+        <ControlButton type="danger" @click="store.active = null">
+            <font-awesome-icon icon="fa-solid fa-xmark" size="xl" fixed-width/>
+        </ControlButton>
         <h2>{{store.active.title}}</h2>
         <p v-if="store.active.description">{{store.active.description}}</p>
 
-        <label for="checkbox">
+        <label @click="isComplete" @keyup.enter="isComplete" for="checkbox">
             Completed
             <input type="checkbox" id="checkbox" v-model="store.active.is_complete"/>
         </label>
@@ -36,10 +43,10 @@ const cleanActiveDate = computed(() => {
         background-color: var(--white);
 
         text-align: start;
-        position: absolute;
-        bottom: -6px;
-        left: 6px;
-        right: 6px;
+        position: sticky;
+        bottom: 0;
+        left: 1rem;
+        right: 1rem;
         border-top-left-radius: var(--border-radii);
         border-top-right-radius: var(--border-radii);
         padding: 1rem;
@@ -53,6 +60,7 @@ const cleanActiveDate = computed(() => {
 
     h2 {
         margin-top: 0;
+        margin-right: 3rem;
     }
 
     span {

@@ -65,7 +65,7 @@ function isComplete() {
 
     span {
         color: var(--primary--dark);
-        font-weight: var(--font-bold);
+        font-weight: var(--weight-bold);
         font-size: .8rem;
     }
 

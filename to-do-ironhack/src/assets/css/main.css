@@ -9,13 +9,16 @@
     --danger: hsla(12, 100%, 50%, 0.6);
     --white: #fff;
 
+    /* Fonts */
+    --font: Avenir, Helvetica, Arial, sans-serif;
+    --weight-bold: 700;
+
     /* Radii */
     --border-radii: 0.5rem;
     --border-radii--soft: 0.2rem;
 
-    /* Fonts */
-    --font: Avenir, Helvetica, Arial, sans-serif;
-    --font-bold: 700;
+    /* Transitions */
+    --transition--soft: .3s ease;
 }
 
 html {
@@ -33,7 +36,9 @@ html {
     border-radius: var(--border-radii--soft);
     cursor: pointer;
     padding: .5rem;
-    font-weight: var(--font-bold);
+    font-weight: var(--weight-bold);
+    font-family: var(--font);
+    transition: all 1s ease;
 }
 
 .ab-btn--primary {

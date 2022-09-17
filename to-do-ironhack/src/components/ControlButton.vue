@@ -18,7 +18,8 @@ const props = defineProps({
         border-radius: 6px;
         border: 2px solid var(--neutral--dark);
         color: var(--neutral--dark);
-        font-weight: 700;
+        font-weight: var(--weight-bold);
+        transition: color var(--transition--soft), border var(--transition--soft);
     }
 
     .regular:hover {

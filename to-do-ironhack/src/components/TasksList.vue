@@ -5,6 +5,10 @@ import ControlButton from './ControlButton.vue';
 const store = taskStore();
 
 store.fetchTasks();
+
+function handleEdit() {
+  console.log('editing');
+}
 </script>
 
 <template>
@@ -18,11 +22,16 @@ store.fetchTasks();
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
         <ControlButton
-        :type="task.id === store.active?.id ? 'active' : 'regular'" class="edit" >
-            <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
+            @click.stop="handleEdit"
+            :type="task.id === store.active?.id ? 'active' : 'regular'"
+            class="edit" >
+                <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
         </ControlButton>
-        <ControlButton type="danger" @click="store.deleteTask(task.id)">
-            <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
+        <ControlButton
+            @click.stop="store.deleteTask(task.id)"
+            type="danger"
+            >
+                <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
         </ControlButton>
     </div>
 </template>

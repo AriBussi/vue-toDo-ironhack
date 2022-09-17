@@ -35,5 +35,6 @@ onMounted(async () => {
   text-align: center;
   color: var(--neutral--dark);
   max-height: 100vh;
+  margin-top: 3.5rem;
 }
 </style>

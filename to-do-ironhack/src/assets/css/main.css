@@ -9,13 +9,16 @@
     --danger: hsla(12, 100%, 50%, 0.6);
     --white: #fff;
 
+    /* Fonts */
+    --font: Avenir, Helvetica, Arial, sans-serif;
+    --font-bold: 700;
+
     /* Radii */
     --border-radii: 0.5rem;
     --border-radii--soft: 0.2rem;
 
-    /* Fonts */
-    --font: Avenir, Helvetica, Arial, sans-serif;
-    --font-bold: 700;
+    /* Transitions */
+    --transition--soft: .3s ease;
 }
 
 html {

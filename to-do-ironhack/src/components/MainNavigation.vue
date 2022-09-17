@@ -55,7 +55,7 @@ nav div {
     font-weight: var(--font-bold);
     text-decoration: none;
     font-size: .8rem;
-    transition: color .3s ease;
+    transition: color var(--transition--soft);
 }
 
 .ab-nav-item:hover {

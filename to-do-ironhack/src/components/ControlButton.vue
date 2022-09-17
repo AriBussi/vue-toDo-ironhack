@@ -19,7 +19,7 @@ const props = defineProps({
         border: 2px solid var(--neutral--dark);
         color: var(--neutral--dark);
         font-weight: 700;
-        transition: color .3s ease, border .3s ease;
+        transition: color var(--transition--soft), border var(--transition--soft);
     }
 
     .regular:hover {

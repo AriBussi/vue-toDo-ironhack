@@ -13,6 +13,10 @@ const cleanActiveDate = computed(() => {
   };
 });
 
+function isComplete() {
+  store.completeTask(store.active.is_complete);
+}
+
 </script>
 
 <template>
@@ -23,7 +27,7 @@ const cleanActiveDate = computed(() => {
         <h2>{{store.active.title}}</h2>
         <p v-if="store.active.description">{{store.active.description}}</p>
 
-        <label for="checkbox">
+        <label @click="isComplete" @keyup.enter="isComplete" for="checkbox">
             Completed
             <input type="checkbox" id="checkbox" v-model="store.active.is_complete"/>
         </label>

@@ -54,6 +54,16 @@ export default defineStore(
       }
     }
 
+    async function completeTask(isComplete) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .update({ is_complete: !isComplete })
+        .match({ id: active.value.id });
+
+      if (error) throw error;
+      return data;
+    }
+
     return {
       currentTasks,
       fetchTasks,
@@ -61,6 +71,7 @@ export default defineStore(
       setActive,
       deleteTask,
       createTask,
+      completeTask,
     };
   },
   {

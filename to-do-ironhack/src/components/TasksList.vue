@@ -23,8 +23,7 @@ function handleEdit() {
         <p>{{task.title}}</p>
         <ControlButton
             @click.stop="handleEdit"
-            :type="task.id === store.active?.id ? 'active' : 'regular'"
-            class="edit" >
+            :type="task.id === store.active?.id ? 'active' : 'regular'" >
                 <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
         </ControlButton>
         <ControlButton
@@ -61,9 +60,5 @@ function handleEdit() {
 
     .completed p {
         text-decoration: line-through;
-    }
-
-    .edit {
-        margin-right: .6rem;
     }
 </style>

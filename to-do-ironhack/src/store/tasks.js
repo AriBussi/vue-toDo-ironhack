@@ -12,8 +12,22 @@ export default defineStore(
     const currentTasks = ref([]);
     const active = ref(null);
 
-    const getIndexById = (id) => currentTasks.value.findIndex((task) => task.id === id);
-    const fetchTaskById = (id) => currentTasks.value[getIndexById(id)];
+    function getIndexById(id) {
+      return currentTasks.value.findIndex((task) => task.id === id);
+    }
+
+    function fetchTaskById(id) {
+      return currentTasks.value[getIndexById(id)];
+    }
+
+    function takeMeHome() {
+      active.value = null;
+      router.push({ name: 'home' });
+    }
+
+    function setActive(id) {
+      active.value = fetchTaskById(id);
+    }
 
     async function fetchTasks() {
       const { data: tasks } = await supabase
@@ -31,12 +45,8 @@ export default defineStore(
       if (error) throw error;
       if (data) {
         currentTasks.value = data;
-        router.push({ name: 'home' });
+        takeMeHome();
       }
-    }
-
-    function setActive(id) {
-      active.value = fetchTaskById(id);
     }
 
     async function deleteTask(id) {
@@ -48,8 +58,7 @@ export default defineStore(
       if (error) throw error;
       if (data) {
         currentTasks.value.splice(getIndexById(id), 1);
-        active.value = null;
-        router.push({ name: 'home' });
+        takeMeHome();
       }
     }
 
@@ -71,8 +80,7 @@ export default defineStore(
 
       if (error) throw error;
       if (data) {
-        active.value = null;
-        router.push({ name: 'home' });
+        takeMeHome();
       }
     }
 

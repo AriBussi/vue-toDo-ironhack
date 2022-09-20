@@ -6,9 +6,6 @@ const store = taskStore();
 
 store.fetchTasks();
 
-function handleEdit() {
-  console.log('editing');
-}
 </script>
 
 <template>
@@ -21,11 +18,12 @@ function handleEdit() {
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
-        <ControlButton
-            @click.stop="handleEdit"
-            :type="task.id === store.active?.id ? 'active' : 'regular'" >
-                <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
-        </ControlButton>
+        <router-link class="ab-nav-item" :to="{ name: 'edit', params: { id: task?.id }}">
+            <ControlButton
+                :type="task.id === store.active?.id ? 'active' : 'regular'" >
+                    <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
+            </ControlButton>
+        </router-link>
         <ControlButton
             @click.stop="store.deleteTask(task.id)"
             type="danger"

@@ -12,6 +12,9 @@ export default defineStore(
     const currentTasks = ref([]);
     const active = ref(null);
 
+    const getIndexById = (id) => currentTasks.value.findIndex((task) => task.id === id);
+    const fetchTaskById = (id) => currentTasks.value[getIndexById(id)];
+
     async function fetchTasks() {
       const { data: tasks } = await supabase
         .from('tasks')
@@ -32,12 +35,8 @@ export default defineStore(
       }
     }
 
-    function getIndexById(id) {
-      return currentTasks.value.findIndex((task) => task.id === id);
-    }
-
     function setActive(id) {
-      active.value = currentTasks.value[getIndexById(id)];
+      active.value = fetchTaskById(id);
     }
 
     async function deleteTask(id) {
@@ -64,14 +63,29 @@ export default defineStore(
       return data;
     }
 
+    async function editTask(id, newValues) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .update({ title: newValues.title, description: newValues.description })
+        .match({ id });
+
+      if (error) throw error;
+      if (data) {
+        active.value = null;
+        router.push({ name: 'home' });
+      }
+    }
+
     return {
       currentTasks,
       fetchTasks,
+      fetchTaskById,
       active,
       setActive,
       deleteTask,
       createTask,
       completeTask,
+      editTask,
     };
   },
   {

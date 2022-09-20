@@ -18,7 +18,9 @@ store.fetchTasks();
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
-        <router-link class="ab-nav-item" :to="{ name: 'edit', params: { id: task?.id }}">
+        <router-link v-if="!task.is_complete"
+            class="ab-nav-item"
+            :to="{ name: 'edit', params: { id: task?.id }}">
             <ControlButton
                 :type="task.id === store.active?.id ? 'active' : 'regular'" >
                     <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>

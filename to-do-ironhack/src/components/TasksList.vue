@@ -5,6 +5,7 @@ import ControlButton from './ControlButton.vue';
 const store = taskStore();
 
 store.fetchTasks();
+
 </script>
 
 <template>
@@ -17,12 +18,19 @@ store.fetchTasks();
     @click="store.setActive(task.id)"
     @keyup.enter="store.setActive(task.id)">
         <p>{{task.title}}</p>
+        <router-link v-if="!task.is_complete"
+            class="ab-nav-item"
+            :to="{ name: 'edit', params: { id: task?.id }}">
+            <ControlButton
+                :type="task.id === store.active?.id ? 'active' : 'regular'" >
+                    <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
+            </ControlButton>
+        </router-link>
         <ControlButton
-        :type="task.id === store.active?.id ? 'active' : 'regular'" class="edit" >
-            <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
-        </ControlButton>
-        <ControlButton type="danger" @click="store.deleteTask(task.id)">
-            <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
+            @click.stop="store.deleteTask(task.id)"
+            type="danger"
+            >
+                <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
         </ControlButton>
     </div>
 </template>
@@ -52,9 +60,5 @@ store.fetchTasks();
 
     .completed p {
         text-decoration: line-through;
-    }
-
-    .edit {
-        margin-right: .6rem;
     }
 </style>

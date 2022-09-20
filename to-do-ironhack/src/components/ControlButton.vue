@@ -16,7 +16,7 @@ const props = defineProps({
         min-width: 2rem;
         height: 2rem;
         border-radius: 6px;
-        border: 2px solid var(--neutral--dark);
+        border: 2px solid transparent;
         color: var(--neutral--dark);
         font-weight: var(--weight-bold);
         transition: color var(--transition--soft), border var(--transition--soft);

@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import AuthView from '../views/AuthView.vue';
 import CreateView from '../views/CreateView.vue';
 import EditView from '../views/EditView.vue';
+import NotFoundView from '../views/NotFoundView.vue';
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/edit/:id',
     name: 'edit',
     component: EditView,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFoundView,
   },
 ];
 

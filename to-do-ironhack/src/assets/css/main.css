@@ -1,5 +1,6 @@
 :root {
     /* Colors */
+    --primary--light: #f0f8f8;
     --primary: #b9dacd;
     --primary--dark: #8bb0a1;
 
@@ -25,6 +26,10 @@ html {
     font-size: 20px;
 }
 
+body {
+    margin-bottom: 0;
+}
+
 *,
 *::before,
 *::after {
@@ -38,7 +43,7 @@ html {
     padding: .5rem;
     font-weight: var(--weight-bold);
     font-family: var(--font);
-    transition: all 1s ease;
+    transition: color 1s ease, border 1s ease;
 }
 
 .ab-btn--primary {
@@ -57,7 +62,7 @@ html {
     flex-direction: column;
     background: var(--neutral--light);
     max-width: 70vw;
-    margin: 4rem auto 0 auto;
+    margin: 4rem auto 2rem auto;
     padding: 2.5rem 1.5rem 1rem 1.5rem;
     border-radius: var(--border-radii);
 }

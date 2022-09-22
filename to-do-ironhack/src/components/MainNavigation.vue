@@ -19,13 +19,13 @@ async function logOut() {
         </router-link>
         <div>
             <router-link v-if="store.currentUser" class="ab-nav-item" to="/create">
-                <font-awesome-icon icon="fa-solid fa-plus" size="l" fixed-width/>
+                <font-awesome-icon icon="fa-solid fa-plus" size="lg" fixed-width/>
                 Create
             </router-link>
             <button v-if="store.currentUser"
                 class="ab-btn ab-btn--link ab-nav-item"
                 @click="logOut">
-                <font-awesome-icon icon="fa-solid fa-right-from-bracket" size="l" fixed-width />
+                <font-awesome-icon icon="fa-solid fa-right-from-bracket" size="lg" fixed-width />
                 Log Out
             </button>
         </div>

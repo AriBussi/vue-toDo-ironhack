@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 import userStore from '@/store/auth';
 import MainNavigation from '@/components/MainNavigation.vue';
@@ -7,13 +7,14 @@ import MainNavigation from '@/components/MainNavigation.vue';
 const store = userStore();
 const router = useRouter();
 
-onMounted(async () => {
+onBeforeMount(async () => {
   await store.fetchUser();
 
   if (!store.currentUser) {
     router.push({ name: 'auth' });
   }
 });
+
 </script>
 
 <template>

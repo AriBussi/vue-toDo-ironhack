@@ -19,31 +19,34 @@ store.fetchTasks();
         @click="store.setActive(task.id)"
         @keyup.enter="store.setActive(task.id)">
             <p>{{task.title}}</p>
-            <router-link v-show="!task.is_complete"
+            <div class="controls">
+                <router-link v-show="!task.is_complete"
                 class="edit-button"
                 :to="{ name: 'edit', params: { id: task?.id }}">
+                    <ControlButton
+                        :type="task.id === store.active?.id ? 'active' : 'regular'" >
+                            <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
+                    </ControlButton>
+                </router-link>
                 <ControlButton
-                    :type="task.id === store.active?.id ? 'active' : 'regular'" >
-                        <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
+                    @click.stop="store.deleteTask(task.id)"
+                    type="danger"
+                    >
+                        <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
                 </ControlButton>
-            </router-link>
-            <ControlButton
-                @click.stop="store.deleteTask(task.id)"
-                type="danger"
-                >
-                    <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
-            </ControlButton>
+            </div>
         </li>
     </TransitionGroup>
 </template>
 
 <style scoped>
-    button {
-        margin-right: 0.6rem;
+    .controls {
+        width: 120px;
+        text-align: right;
     }
 
-    .edit-button {
-        width: 2rem;
+    button {
+        margin-right: 0.6rem;
     }
 
     ul {
@@ -67,7 +70,6 @@ store.fetchTasks();
     p {
         flex-grow: 1;
         font-weight: var(--weight-bold);
-        margin: 1rem;
     }
 
     .active {

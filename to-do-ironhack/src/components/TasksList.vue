@@ -58,7 +58,7 @@ store.fetchTasks();
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
-        background-color: var(--neutral--light);
+        background-color: var(--primary--light);
         cursor: pointer;
         min-width: 100%;
     }
@@ -72,12 +72,16 @@ store.fetchTasks();
         font-weight: var(--weight-bold);
     }
 
-    .active {
-        background-color: var(--primary);
+    .completed {
+        background-color: var(--neutral--light);
     }
 
     .completed p {
         text-decoration: line-through;
+    }
+
+    .active {
+        background-color: var(--primary);
     }
 
     .list-move,

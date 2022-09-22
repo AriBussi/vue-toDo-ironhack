@@ -3,7 +3,6 @@ import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import userStore from '@/store/auth';
 import MainNavigation from '@/components/MainNavigation.vue';
-import TheFooter from '@/components/TheFooter.vue';
 
 const store = userStore();
 const router = useRouter();
@@ -22,7 +21,6 @@ onMounted(async () => {
   <main>
     <router-view/>
   </main>
-  <TheFooter />
 </template>
 
 <style>

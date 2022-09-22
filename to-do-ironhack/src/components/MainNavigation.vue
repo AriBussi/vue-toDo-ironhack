@@ -14,7 +14,7 @@ async function logOut() {
 
 <template>
     <nav>
-        <router-link class="ab-nav-item" to="/">
+        <router-link class="ab-nav-item logo" to="/">
             <font-awesome-icon icon="fa-solid fa-house" size="xl" fixed-width />
         </router-link>
         <div>
@@ -34,7 +34,7 @@ async function logOut() {
 
 <style scoped>
 nav {
-    padding: .5rem;
+    padding: .5rem 0;
     min-height: 3.1rem;
     display: flex;
     position: fixed;
@@ -57,6 +57,11 @@ nav div {
     text-decoration: none;
     font-size: .8rem;
     transition: color var(--transition--soft);
+    margin-right: 1rem;
+}
+
+.logo {
+    margin-left: 1rem;
 }
 
 .ab-nav-item:hover {

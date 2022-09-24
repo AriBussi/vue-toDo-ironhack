@@ -89,12 +89,16 @@ async function log() {
 
         <button
             class="ab-btn ab-btn--primary"
-            type="submit">{{isRegistered ? 'Log In' : 'Register' }}
+            type="submit">
+
+            {{isRegistered ? 'Log In' : 'Register' }}
         </button>
 
         <div class="ab-form-footer">
             <p>{{ isRegistered ? "Don't have an account?" : 'Already registered?' }}</p>
             <button class="ab-btn ab-btn--link" @click.prevent="isRegistered = !isRegistered">
+              <font-awesome-icon v-if="isRegistered" icon="fa-solid fa-address-card" size="lg" />
+              <font-awesome-icon v-else icon="fa-solid fa-right-to-bracket" size="lg"/>
                 {{ isRegistered ? 'Register' : 'Log In'}}
             </button>
         </div>

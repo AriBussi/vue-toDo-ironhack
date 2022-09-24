@@ -26,7 +26,7 @@ async function logOut() {
                 class="ab-btn ab-btn--link ab-nav-item"
                 @click="logOut">
                 <font-awesome-icon icon="fa-solid fa-right-from-bracket" size="lg" fixed-width />
-                Log Out
+                Log out
             </button>
         </div>
     </nav>

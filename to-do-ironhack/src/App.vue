@@ -1,59 +1,40 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 import userStore from '@/store/auth';
+import MainNavigation from '@/components/MainNavigation.vue';
 
 const store = userStore();
 const router = useRouter();
 
-onMounted(async () => {
-  try {
-    await store.fetchUser();
+onBeforeMount(async () => {
+  await store.fetchUser();
 
-    if (!store.currentUser) {
-      router.push({ name: 'auth' });
-    } else {
-      router.push({ name: 'home' });
-    }
-  } catch (error) {
-    console.log(error);
+  if (!store.currentUser) {
+    router.push({ name: 'auth' });
   }
 });
 
-async function logOut() {
-  store.logOut();
-  store.currentUser = null;
-  router.push({ name: 'auth' });
-}
 </script>
 
 <template>
-  <nav>
-      <router-link to="/">Home</router-link>
-      <button v-if="store.currentUser" class="ab-btn ab-btn--link" @click="logOut">Log out</button>
-  </nav>
-  <router-view/>
+  <MainNavigation />
+  <main>
+    <router-view/>
+  </main>
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--neutral--dark);
+  margin-top: 4.2rem;
 }
 
-nav {
-    padding: 30px;
-}
-
-nav a {
-font-weight: bold;
-color: var(--neutral--dark);
-}
-
-nav a.router-link-exact-active {
-color: var(--primary);
+main {
+  min-height: calc(100vh - 5.9rem);
 }
 </style>

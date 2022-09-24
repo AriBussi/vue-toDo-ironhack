@@ -1,16 +1,24 @@
 <!-- eslint-disable vuejs-accessibility/label-has-for -->
 <script setup>
+// import { ref } from 'vue';
+import taskStore from '@/store/tasks';
 
+const store = taskStore();
+// const selected = ref('All Tasks');
+
+function filter(selected) {
+  store.fetchTasks(selected);
+}
 </script>
 
 <template>
     <span >
         <font-awesome-icon icon="fa-solid fa-filter" size="lg" />
         <label for="filters">
-            <select  name="filters" id="filters">
+            <select @change="filter($event.target.value)"  name="filters" id="filters">
                 <option value="all">All tasks</option>
-                <option value="completed">Complete</option>
-                <option value="active">Ongoing</option>
+                <option value="complete">Complete</option>
+                <option value="ongoing">Ongoing</option>
             </select>
         </label>
     </span>
@@ -26,5 +34,6 @@
         font-size: inherit;
         outline: none;
         text-align: center;
+        cursor: pointer;
     }
 </style>

@@ -31,7 +31,7 @@ onBeforeMount(async () => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--neutral--dark);
-  margin-top: 3.5rem;
+  margin-top: 4.2rem;
 }
 
 main {

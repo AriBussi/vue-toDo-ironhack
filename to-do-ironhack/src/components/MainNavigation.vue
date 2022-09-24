@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import userStore from '@/store/auth';
+import TaskFilters from './TaskFilters.vue';
 
 const store = userStore();
 const router = useRouter();
@@ -14,14 +15,18 @@ async function logOut() {
 
 <template>
     <nav>
+
         <router-link class="ab-nav-item logo" to="/">
             <font-awesome-icon icon="fa-solid fa-house" size="xl" fixed-width />
         </router-link>
         <div>
+            <TaskFilters class="ab-btn ab-btn--link ab-nav-item" />
+
             <router-link v-if="store.currentUser" class="ab-nav-item" to="/create">
                 <font-awesome-icon icon="fa-solid fa-plus" size="lg" fixed-width/>
                 Create
             </router-link>
+
             <button v-if="store.currentUser"
                 class="ab-btn ab-btn--link ab-nav-item"
                 @click="logOut">
@@ -58,6 +63,7 @@ nav div {
     font-size: .8rem;
     transition: color var(--transition--soft);
     margin-right: 1rem;
+    padding: 0;
 }
 
 .logo {

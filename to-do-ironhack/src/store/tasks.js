@@ -29,11 +29,24 @@ export default defineStore(
       active.value = fetchTaskById(id);
     }
 
-    async function fetchTasks() {
-      const { data: tasks } = await supabase
+    async function fetchTasks(filter) {
+      active.value = null;
+
+      let query = supabase
         .from('tasks')
-        .select('*')
-        .order('inserted_at', { ascending: false });
+        .select('*');
+
+      if (filter === 'complete') {
+        query = query.is('is_complete', true);
+      }
+
+      if (filter === 'ongoing') {
+        query = query.is('is_complete', false);
+      }
+
+      query.order('inserted_at', { ascending: false });
+
+      const { data: tasks } = await query;
       currentTasks.value = tasks;
     }
 

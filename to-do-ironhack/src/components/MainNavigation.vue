@@ -19,15 +19,15 @@ async function logOut() {
         <router-link class="ab-nav-item logo" to="/">
             <font-awesome-icon icon="fa-solid fa-house" size="xl" fixed-width />
         </router-link>
-        <div>
+        <div v-if="store.currentUser" >
             <TaskFilters class="ab-btn ab-btn--link ab-nav-item" />
 
-            <router-link v-if="store.currentUser" class="ab-nav-item" to="/create">
+            <router-link class="ab-nav-item" to="/create">
                 <font-awesome-icon icon="fa-solid fa-plus" size="lg" fixed-width/>
                 Create
             </router-link>
 
-            <button v-if="store.currentUser"
+            <button
                 class="ab-btn ab-btn--link ab-nav-item"
                 @click="logOut">
                 <font-awesome-icon icon="fa-solid fa-right-from-bracket" size="lg" fixed-width />
@@ -39,7 +39,7 @@ async function logOut() {
 
 <style scoped>
 nav {
-    padding: .5rem 0;
+    padding: .5rem;
     min-height: 3.1rem;
     display: flex;
     position: fixed;

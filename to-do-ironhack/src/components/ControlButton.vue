@@ -22,17 +22,17 @@ const props = defineProps({
         transition: color var(--transition--soft), border var(--transition--soft);
     }
 
-    .regular:hover {
+    .btn-regular:hover {
         border-color: var(--primary--dark);
         color: var(--primary--dark);
     }
 
-    .active:hover {
+    .btn-active:hover {
         border-color: var(--white);
         color: var(--white);
     }
 
-    .danger:hover {
+    .btn-danger:hover {
         border: 2px solid var(--danger);
         color: var(--danger);
     }

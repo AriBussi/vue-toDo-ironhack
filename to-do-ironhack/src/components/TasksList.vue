@@ -21,16 +21,15 @@ store.fetchTasks();
             <p>{{task.title}}</p>
             <div class="controls">
                 <router-link v-show="!task.is_complete"
-                class="edit-button"
                 :to="{ name: 'edit', params: { id: task?.id }}">
                     <ControlButton
-                        :type="task.id === store.active?.id ? 'active' : 'regular'" >
+                        :type="task.id === store.active?.id ? 'btn-active' : 'btn-regular'" >
                             <font-awesome-icon icon="fa-solid fa-pen" size="xl" fixed-width/>
                     </ControlButton>
                 </router-link>
                 <ControlButton
                     @click.stop="store.deleteTask(task.id)"
-                    type="danger"
+                    type="btn-danger"
                     >
                         <font-awesome-icon icon="fa-solid fa-trash" size="xl" fixed-width/>
                 </ControlButton>
@@ -82,6 +81,7 @@ store.fetchTasks();
 
     .active {
         background-color: var(--primary);
+        transition: background var(--transition--soft)
     }
 
     .list-move,

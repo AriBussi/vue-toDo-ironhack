@@ -20,41 +20,38 @@ watch(() => store.currentUser, () => {
 });
 
 function showError(er) {
-  error.value = `Error: ${er}`;
+  error.value = er;
   setTimeout(() => {
     error.value = null;
-  }, 2000);
+  }, 4000);
 }
 
-async function register() {
-  if (password.value === confirmPassword.value) {
-    try {
-      const { er } = await store.signUp({
-        email: email.value,
-        password: password.value,
-      });
-      if (er) throw error;
-      router.push({ name: 'auth' });
-    } catch (er) {
-      showError(er.message);
-    }
+function register() {
+  if (password.value !== confirmPassword.value) {
+    showError('Passwords do not match');
     return;
   }
 
-  showError('passwords do not match');
+  store.signUp({
+    email: email.value,
+    password: password.value,
+  })
+    // .then(router.push({ name: 'auth' }))
+    .catch((er) => showError(er));
 }
 
-async function log() {
-  try {
-    const { er } = await store.logIn({
-      email: email.value,
-      password: password.value,
-    });
-    if (er) throw error;
-    router.push({ name: 'auth' });
-  } catch (er) {
-    showError(er.message);
+function log() {
+  if (!password.value) {
+    showError('Password is required');
+    return;
   }
+
+  store.logIn({
+    email: email.value,
+    password: password.value,
+  })
+    // .then(router.push({ name: 'home' }))
+    .catch((er) => showError(er));
 }
 
 </script>
@@ -103,5 +100,5 @@ async function log() {
             </button>
         </div>
     </form>
-    <ErrorDisplay v-show="error" :error="error"/>
+    <ErrorDisplay :error="error"/>
 </template>

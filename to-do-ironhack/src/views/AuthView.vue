@@ -83,13 +83,14 @@ function log() {
             type="submit">
 
             {{isRegistered ? 'Log In' : 'Register' }}
+
+            <font-awesome-icon v-if="isRegistered" icon="fa-solid fa-right-to-bracket" size="lg" />
+            <font-awesome-icon v-else icon="fa-solid fa-address-card" size="lg"/>
         </button>
 
         <div class="form-footer">
             <p>{{ isRegistered ? "Don't have an account?" : 'Already registered?' }}</p>
             <button class="btn btn--link" @click.prevent="isRegistered = !isRegistered">
-              <font-awesome-icon v-if="isRegistered" icon="fa-solid fa-address-card" size="lg" />
-              <font-awesome-icon v-else icon="fa-solid fa-right-to-bracket" size="lg"/>
                 {{ isRegistered ? 'Register' : 'Log In'}}
             </button>
         </div>

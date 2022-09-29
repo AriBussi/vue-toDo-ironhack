@@ -1,17 +1,18 @@
 <script setup>
 import useUserStore from '@/store/auth';
+import useErrorStore from '@/store/error';
 import { watch, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ErrorDisplay from '@/components/ErrorDisplay.vue';
 
 const store = useUserStore();
+const errorStore = useErrorStore();
 const router = useRouter();
 
 const isRegistered = ref(true);
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
-const error = ref(null);
 
 watch(() => store.currentUser, () => {
   if (store.currentUser) {
@@ -19,16 +20,9 @@ watch(() => store.currentUser, () => {
   }
 });
 
-function showError(er) {
-  error.value = er;
-  setTimeout(() => {
-    error.value = null;
-  }, 4000);
-}
-
 function register() {
   if (password.value !== confirmPassword.value) {
-    showError('Passwords do not match');
+    errorStore.showError('Passwords do not match');
     return;
   }
 
@@ -37,12 +31,12 @@ function register() {
     password: password.value,
   })
     // .then(router.push({ name: 'auth' }))
-    .catch((er) => showError(er));
+    .catch((er) => errorStore.showError(er));
 }
 
 function log() {
   if (!password.value) {
-    showError('Password is required');
+    errorStore.showError('Password is required');
     return;
   }
 
@@ -51,7 +45,7 @@ function log() {
     password: password.value,
   })
     // .then(router.push({ name: 'home' }))
-    .catch((er) => showError(er));
+    .catch((er) => errorStore.showError(er));
 }
 
 </script>
@@ -100,5 +94,5 @@ function log() {
             </button>
         </div>
     </form>
-    <ErrorDisplay :error="error"/>
+    <ErrorDisplay :error="errorStore.error"/>
 </template>

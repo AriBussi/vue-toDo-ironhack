@@ -65,6 +65,11 @@ body {
 .ab-btn--primary {
     background-color: var(--primary);
     color: var(--white);
+    transition: background var(--transition--soft);
+}
+
+.ab-btn--primary:active {
+    background-color: var(--primary--dark);
 }
 
 .ab-btn--link {

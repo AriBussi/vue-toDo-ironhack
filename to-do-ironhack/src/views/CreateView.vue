@@ -21,11 +21,11 @@ function createTask() {
 </script>
 
 <template>
-    <form @submit.prevent="createTask" class="ab-form">
+    <form @submit.prevent="createTask" class="form">
         <label for="title">
             <input
                 v-model="title"
-                class="ab-form-input"
+                class="form-input"
                 type="text"
                 placeholder="Task title"
                 name="title" >
@@ -33,7 +33,7 @@ function createTask() {
         <label for="description">
             <textarea
                 v-model="description"
-                class="ab-form-input ab-form-textarea"
+                class="form-input form-textarea"
                 type="text"
                 placeholder="Task description"
                 name="description" >
@@ -41,7 +41,7 @@ function createTask() {
         </label>
 
         <button
-            class="ab-btn ab-btn--primary"
+            class="btn btn--primary"
             type="submit">
             Add new task
         </button>

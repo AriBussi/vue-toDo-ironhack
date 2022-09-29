@@ -35,11 +35,11 @@ function handleEdit() {
 </script>
 
 <template>
-    <form @submit.prevent="handleEdit" class="ab-form">
+    <form @submit.prevent="handleEdit" class="form">
         <label for="title">
             <input
                 v-model="title"
-                class="ab-form-input"
+                class="form-input"
                 type="text"
                 placeholder="Task title"
                 name="title" >
@@ -47,7 +47,7 @@ function handleEdit() {
         <label for="description">
             <textarea
                 v-model="description"
-                class="ab-form-input ab-form-textarea"
+                class="form-input form-textarea"
                 type="text"
                 placeholder="Task description"
                 name="description" >
@@ -55,7 +55,7 @@ function handleEdit() {
         </label>
 
         <button
-            class="ab-btn ab-btn--primary"
+            class="btn btn--primary"
             type="submit">
             Edit task
         </button>

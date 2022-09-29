@@ -53,7 +53,7 @@ body {
     box-sizing: border-box;
 }
 
-.ab-btn {
+.btn {
     border: none;
     border-radius: var(--border-radii--soft);
     cursor: pointer;
@@ -63,26 +63,26 @@ body {
     transition: color 1s ease, border 1s ease;
 }
 
-.ab-btn--primary {
+.btn--primary {
     background-color: var(--primary);
     color: var(--white);
     transition: background var(--transition--soft);
 }
 
-.ab-btn--primary:active {
+.btn--primary:active {
     background-color: var(--primary--dark);
 }
 
-.ab-btn--link {
+.btn--link {
     background-color: transparent;
     color: var(--primary--dark);
 }
 
-.ab-form svg {
+.form svg {
     margin: 0 .2rem;
 }
 
-.ab-form {
+.form {
     display: flex;
     display: flex;
     flex-direction: column;
@@ -94,14 +94,14 @@ body {
     max-width: 25rem;
 }
 
-.ab-form-footer {
+.form-footer {
     display: flex;
     justify-content: center;
     align-items: baseline;
     font-size: .8rem;
 }
 
-.ab-form-input {
+.form-input {
     font-family: var(--font);
     padding: .5rem;
     margin-bottom: 1rem;
@@ -110,7 +110,7 @@ body {
     width: 100%;
 }
 
-.ab-form-textarea {
+.form-textarea {
     resize: none;
     min-height: 6rem;
 }

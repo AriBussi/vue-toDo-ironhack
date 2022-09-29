@@ -37,4 +37,18 @@ onBeforeMount(async () => {
 main {
   min-height: calc(100vh - 5.9rem);
 }
+
+@media (min-width: 500px) {
+  #app {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+}
+
+@media (min-width: 500px) {
+  #app {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
 </style>

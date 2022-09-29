@@ -40,7 +40,7 @@ store.fetchTasks();
 
 <style scoped>
     .controls {
-        width: 120px;
+        width: 100px;
         text-align: right;
     }
 
@@ -56,11 +56,12 @@ store.fetchTasks();
     li {
         display: flex;
         align-items: center;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem 0;
         background: var(--primary--light);
         cursor: pointer;
         min-width: 100%;
         border-radius: var(--border-radii--soft);
+        transition: all var(--transition--soft);
     }
 
     li:last-of-type {
@@ -83,13 +84,14 @@ store.fetchTasks();
     .active {
         background: var(--primary);
         transition: all var(--transition--soft);
-        transform: scaleX(1.05);
+        margin-left: -.6rem;
+        margin-right: -.6rem;
     }
 
     .list-move,
     .list-enter-active,
     .list-leave-active {
-        transition: all var(--transition--soft);
+        transition: all var(--transition);
     }
 
     .list-enter-from,
@@ -100,5 +102,16 @@ store.fetchTasks();
 
     .list-leave-active {
         position: absolute;
+    }
+
+    @media (min-width: 500px) {
+        .controls {
+            width: 140px;
+        }
+
+        .active {
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
     }
 </style>

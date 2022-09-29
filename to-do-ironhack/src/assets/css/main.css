@@ -19,6 +19,7 @@
     --border-radii--soft: 0.2rem;
 
     /* Transitions */
+    --transition: .5s ease;
     --transition--soft: .3s ease;
 
     /* Layout */
@@ -44,7 +45,7 @@ body {
     padding: 0;
     position: absolute;
     width: 1px;
-  }
+}
 
 *,
 *::before,

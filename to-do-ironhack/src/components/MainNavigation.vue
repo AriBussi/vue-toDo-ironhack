@@ -71,7 +71,7 @@ nav > div {
     text-decoration: none;
     font-size: .8rem;
     transition: color var(--transition--soft);
-    margin-right: 1rem;
+    margin-right: .5rem;
     padding: 0;
 }
 
@@ -81,5 +81,11 @@ nav > div {
 
 .ab-nav-item:hover {
     color: var(--neutral-dark);
+}
+
+@media (min-width: 500px) {
+    .ab-nav-item {
+        margin-right: 1.2rem;
+    }
 }
 </style>

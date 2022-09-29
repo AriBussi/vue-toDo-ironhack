@@ -4,9 +4,8 @@ import useTaskStore from '@/store/tasks';
 import useErrorStore from '@/store/error';
 import ErrorDisplay from '@/components/ErrorDisplay.vue';
 
-const errorStore = useErrorStore();
-
 const store = useTaskStore();
+const errorStore = useErrorStore();
 
 const title = ref(null);
 const description = ref(null);

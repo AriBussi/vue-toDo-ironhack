@@ -22,7 +22,7 @@ function isComplete() {
 <template>
     <Transition>
         <aside v-if="store.active" >
-            <ControlButton type="danger" @click="store.active = null">
+            <ControlButton type="btn-danger" @click="store.active = null">
                 <font-awesome-icon icon="fa-solid fa-xmark" size="xl" fixed-width/>
             </ControlButton>
             <h2>{{store.active.title}}</h2>

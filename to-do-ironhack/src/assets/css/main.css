@@ -20,10 +20,15 @@
 
     /* Transitions */
     --transition--soft: .3s ease;
+
+    /* Layout */
+    --layout-width: 1200px;
 }
 
 html {
     font-size: 20px;
+    max-width: var(--layout-width);
+    margin: 0 auto;
 }
 
 body {

@@ -45,7 +45,7 @@ main {
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 900px) {
   #app {
     margin-left: 1rem;
     margin-right: 1rem;

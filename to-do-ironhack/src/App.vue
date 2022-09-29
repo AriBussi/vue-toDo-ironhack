@@ -1,5 +1,4 @@
 <script setup>
-import { onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 import userStore from '@/store/auth';
 import MainNavigation from '@/components/MainNavigation.vue';
@@ -7,12 +6,19 @@ import MainNavigation from '@/components/MainNavigation.vue';
 const store = userStore();
 const router = useRouter();
 
-onBeforeMount(async () => {
-  await store.fetchUser();
+store.fetchUser();
 
-  if (!store.currentUser) {
-    router.push({ name: 'auth' });
+router.beforeEach(async (to) => {
+  if (
+    // make sure the user is authenticated
+    !store.currentUser
+    // ❗️ Avoid an infinite redirect
+    && to.name !== 'auth'
+  ) {
+    // redirect the user to the login page
+    return { name: 'auth' };
   }
+  return null;
 });
 
 </script>

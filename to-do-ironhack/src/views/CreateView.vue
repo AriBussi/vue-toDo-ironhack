@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue';
 import useTaskStore from '@/store/tasks';
+import useErrorStore from '@/store/error';
+import ErrorDisplay from '@/components/ErrorDisplay.vue';
+
+const errorStore = useErrorStore();
 
 const store = useTaskStore();
 
@@ -8,6 +12,10 @@ const title = ref(null);
 const description = ref(null);
 
 function createTask() {
+  if (!title.value) {
+    errorStore.showError('Title is required');
+    return;
+  }
   const task = { title: title.value, description: description.value };
   store.createTask(task);
 }
@@ -39,4 +47,5 @@ function createTask() {
             Add new task
         </button>
     </form>
+    <ErrorDisplay :error="errorStore.error"/>
 </template>

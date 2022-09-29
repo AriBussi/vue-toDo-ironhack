@@ -16,19 +16,19 @@ async function logOut() {
 <template>
   <nav>
     <div>
-        <router-link class="ab-nav-item logo" to="/">
+        <router-link class="nav-item logo" to="/">
             <font-awesome-icon icon="fa-solid fa-house" size="xl" fixed-width />
         </router-link>
         <div class="controls" v-if="store.currentUser" >
-            <TaskFilters class="ab-btn ab-btn--link ab-nav-item" />
+            <TaskFilters class="btn btn--link nav-item" />
 
-            <router-link class="ab-nav-item" to="/create">
+            <router-link class="nav-item" to="/create">
                 <font-awesome-icon icon="fa-solid fa-plus" size="lg" fixed-width/>
                 Create
             </router-link>
 
             <button
-                class="ab-btn ab-btn--link ab-nav-item"
+                class="btn btn--link nav-item"
                 @click="logOut">
                 <font-awesome-icon icon="fa-solid fa-right-from-bracket" size="lg" fixed-width />
                 Log out
@@ -65,7 +65,7 @@ nav > div {
     flex-grow: 1;
 }
 
-.ab-nav-item {
+.nav-item {
     color: var(--primary);
     font-weight: var(--weight-bold);
     text-decoration: none;
@@ -79,12 +79,12 @@ nav > div {
     margin-left: 1rem;
 }
 
-.ab-nav-item:hover {
+.nav-item:hover {
     color: var(--neutral-dark);
 }
 
 @media (min-width: 500px) {
-    .ab-nav-item {
+    .nav-item {
         margin-right: 1.2rem;
     }
 }

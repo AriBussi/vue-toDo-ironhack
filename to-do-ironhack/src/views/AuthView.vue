@@ -51,11 +51,11 @@ function log() {
 </script>
 
 <template>
-    <form class="ab-form" @submit.prevent="isRegistered ? log() : register()">
+    <form class="form" @submit.prevent="isRegistered ? log() : register()">
         <label for="email">
             <input
                 v-model="email"
-                class="ab-form-input"
+                class="form-input"
                 type="email"
                 placeholder="Email"
                 name="email" >
@@ -63,7 +63,7 @@ function log() {
         <label for="password">
             <input
                 v-model="password"
-                class="ab-form-input"
+                class="form-input"
                 type="password"
                 placeholder="Password"
                 name="set password" >
@@ -72,24 +72,25 @@ function log() {
             <input
                 v-if="!isRegistered"
                 v-model="confirmPassword"
-                class="ab-form-input"
+                class="form-input"
                 type="password"
                 placeholder="Confirm password"
                 name="confirm password" >
         </label>
 
         <button
-            class="ab-btn ab-btn--primary"
+            class="btn btn--primary"
             type="submit">
 
             {{isRegistered ? 'Log In' : 'Register' }}
+
+            <font-awesome-icon v-if="isRegistered" icon="fa-solid fa-right-to-bracket" size="lg" />
+            <font-awesome-icon v-else icon="fa-solid fa-address-card" size="lg"/>
         </button>
 
-        <div class="ab-form-footer">
+        <div class="form-footer">
             <p>{{ isRegistered ? "Don't have an account?" : 'Already registered?' }}</p>
-            <button class="ab-btn ab-btn--link" @click.prevent="isRegistered = !isRegistered">
-              <font-awesome-icon v-if="isRegistered" icon="fa-solid fa-address-card" size="lg" />
-              <font-awesome-icon v-else icon="fa-solid fa-right-to-bracket" size="lg"/>
+            <button class="btn btn--link" @click.prevent="isRegistered = !isRegistered">
                 {{ isRegistered ? 'Register' : 'Log In'}}
             </button>
         </div>

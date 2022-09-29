@@ -1,10 +1,7 @@
-<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <script setup>
-// import { ref } from 'vue';
 import taskStore from '@/store/tasks';
 
 const store = taskStore();
-// const selected = ref('All Tasks');
 
 function filter(selected) {
   store.fetchTasks(selected);

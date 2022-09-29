@@ -19,11 +19,17 @@
     --border-radii--soft: 0.2rem;
 
     /* Transitions */
+    --transition: .5s ease;
     --transition--soft: .3s ease;
+
+    /* Layout */
+    --layout-width: 1200px;
 }
 
 html {
     font-size: 20px;
+    max-width: var(--layout-width);
+    margin: 0 auto;
 }
 
 body {
@@ -39,7 +45,7 @@ body {
     padding: 0;
     position: absolute;
     width: 1px;
-  }
+}
 
 *,
 *::before,
@@ -60,6 +66,11 @@ body {
 .ab-btn--primary {
     background-color: var(--primary);
     color: var(--white);
+    transition: background var(--transition--soft);
+}
+
+.ab-btn--primary:active {
+    background-color: var(--primary--dark);
 }
 
 .ab-btn--link {

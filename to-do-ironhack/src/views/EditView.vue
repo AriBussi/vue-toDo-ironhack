@@ -2,9 +2,12 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import useTaskStore from '@/store/tasks';
+import useErrorStore from '@/store/error';
+import ErrorDisplay from '@/components/ErrorDisplay.vue';
 
 const route = useRoute();
 const store = useTaskStore();
+const errorStore = useErrorStore();
 
 const title = ref(null);
 const description = ref(null);
@@ -17,6 +20,11 @@ onMounted(() => {
 });
 
 function handleEdit() {
+  if (!title.value) {
+    errorStore.showError('Title is required');
+    return;
+  }
+
   const newValues = {
     title: title.value,
     description: description.value,
@@ -52,4 +60,5 @@ function handleEdit() {
             Edit task
         </button>
     </form>
+    <ErrorDisplay :error="errorStore.error"/>
 </template>

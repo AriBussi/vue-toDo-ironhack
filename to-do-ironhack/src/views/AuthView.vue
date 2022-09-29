@@ -1,17 +1,18 @@
 <script setup>
 import useUserStore from '@/store/auth';
+import useErrorStore from '@/store/error';
 import { watch, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ErrorDisplay from '@/components/ErrorDisplay.vue';
 
 const store = useUserStore();
+const errorStore = useErrorStore();
 const router = useRouter();
 
 const isRegistered = ref(true);
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
-const error = ref(null);
 
 watch(() => store.currentUser, () => {
   if (store.currentUser) {
@@ -19,42 +20,32 @@ watch(() => store.currentUser, () => {
   }
 });
 
-function showError(er) {
-  error.value = `Error: ${er}`;
-  setTimeout(() => {
-    error.value = null;
-  }, 2000);
-}
-
-async function register() {
-  if (password.value === confirmPassword.value) {
-    try {
-      const { er } = await store.signUp({
-        email: email.value,
-        password: password.value,
-      });
-      if (er) throw error;
-      router.push({ name: 'auth' });
-    } catch (er) {
-      showError(er.message);
-    }
+function register() {
+  if (password.value !== confirmPassword.value) {
+    errorStore.showError('Passwords do not match');
     return;
   }
 
-  showError('passwords do not match');
+  store.signUp({
+    email: email.value,
+    password: password.value,
+  })
+    // .then(router.push({ name: 'auth' }))
+    .catch((er) => errorStore.showError(er));
 }
 
-async function log() {
-  try {
-    const { er } = await store.logIn({
-      email: email.value,
-      password: password.value,
-    });
-    if (er) throw error;
-    router.push({ name: 'auth' });
-  } catch (er) {
-    showError(er.message);
+function log() {
+  if (!password.value) {
+    errorStore.showError('Password is required');
+    return;
   }
+
+  store.logIn({
+    email: email.value,
+    password: password.value,
+  })
+    // .then(router.push({ name: 'home' }))
+    .catch((er) => errorStore.showError(er));
 }
 
 </script>
@@ -103,5 +94,5 @@ async function log() {
             </button>
         </div>
     </form>
-    <ErrorDisplay v-show="error" :error="error"/>
+    <ErrorDisplay :error="errorStore.error"/>
 </template>

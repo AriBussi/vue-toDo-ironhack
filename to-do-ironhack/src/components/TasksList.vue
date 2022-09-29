@@ -57,9 +57,10 @@ store.fetchTasks();
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
-        background-color: var(--primary--light);
+        background: var(--primary--light);
         cursor: pointer;
         min-width: 100%;
+        border-radius: var(--border-radii--soft);
     }
 
     li:last-of-type {
@@ -72,7 +73,7 @@ store.fetchTasks();
     }
 
     .completed {
-        background-color: var(--neutral--light);
+        background: var(--neutral--light);
     }
 
     .completed p {
@@ -80,14 +81,15 @@ store.fetchTasks();
     }
 
     .active {
-        background-color: var(--primary);
-        transition: background var(--transition--soft)
+        background: var(--primary);
+        transition: all var(--transition--soft);
+        transform: scaleX(1.05);
     }
 
     .list-move,
     .list-enter-active,
     .list-leave-active {
-        transition: all 0.5s ease;
+        transition: all var(--transition--soft);
     }
 
     .list-enter-from,

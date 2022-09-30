@@ -68,15 +68,18 @@ function log() {
                 placeholder="Password"
                 name="set password" >
         </label>
-        <label for="confirm password">
-            <input
-                v-if="!isRegistered"
-                v-model="confirmPassword"
-                class="form-input"
-                type="password"
-                placeholder="Confirm password"
-                name="confirm password" >
-        </label>
+
+          <label for="confirm password">
+            <TransitionGroup name="fade">
+              <input
+                  v-if="!isRegistered"
+                  v-model="confirmPassword"
+                  class="form-input"
+                  type="password"
+                  placeholder="Confirm password"
+                  name="confirm password" >
+            </TransitionGroup>
+          </label>
 
         <button
             class="btn btn--primary"
@@ -97,3 +100,17 @@ function log() {
     </form>
     <ErrorDisplay :error="errorStore.error"/>
 </template>
+
+<style scoped>
+    .fade-move,
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: all var(--transition);
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+</style>

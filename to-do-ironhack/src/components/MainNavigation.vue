@@ -16,7 +16,7 @@ async function logOut() {
 <template>
   <nav>
     <div>
-        <router-link class="nav-item logo" to="home">
+        <router-link class="nav-item logo" to="/">
             <font-awesome-icon icon="fa-solid fa-house" size="xl" fixed-width />
         </router-link>
         <div class="controls" v-if="store.currentUser" >
